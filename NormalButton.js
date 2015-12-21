@@ -3,10 +3,16 @@ var {
   StyleSheet,
   Text,
   View,
-  TouchableHighlight
+  TouchableHighlight,
+  Alert
 } = React;
 
 var NormalButton = React.createClass({
+
+  _onPressHandler() {
+    console.log(this.props.btnName);
+  },
+
   render: function() {
     return (
       <TouchableHighlight
@@ -14,6 +20,7 @@ var NormalButton = React.createClass({
         activeOpacity={1}
         animationVelocity={0}
         underlayColor="#ccc"
+        onPress={this._onPressHandler}
         >
         <Text>
           {this.props.btnName}
