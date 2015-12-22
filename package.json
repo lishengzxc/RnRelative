@@ -1,7 +1,6 @@
 {
   "name": "RnRelative",
   "version": "0.0.1",
-  "private": true,
   "scripts": {
     "start": "react-native start"
   },
@@ -9,6 +8,7 @@
     "react-native": "^0.17.0"
   },
   "devDependencies": {
+    "lodash": "~3.10.1",
     "react": "^0.14.3",
     "react-redux": "^4.0.2",
     "redux": "^3.0.5"
