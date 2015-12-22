@@ -30,8 +30,8 @@ var styles = StyleSheet.create({
     justifyContent: 'flex-end',
     alignItems: 'flex-end',
     backgroundColor: '#f6f6f6',
-    borderBottomWidth: 1,
-    borderBottomColor: '#e6e6e6'
+    borderTopWidth: 1,
+    borderTopColor: '#e6e6e6'
   },
   btnName: {
     color: 'red'

@@ -13,7 +13,7 @@ var EqualButton = React.createClass({
         style={styles.equalButton}
         activeOpacity={1}
         animationVelocity={0}
-        underlayColor="#ccc"
+        underlayColor="#B92501"
         >
         <Text style={styles.btnName}>
           ＝
@@ -29,9 +29,9 @@ var styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'flex-end',
     alignItems: 'flex-end',
-    borderBottomWidth: 1,
-    borderBottomColor: '#e6e6e6',
-    backgroundColor: 'red'
+    backgroundColor: 'red',
+    borderLeftColor: 'red',
+    borderLeftWidth: 1
   },
   btnName: {
     color: '#fff'

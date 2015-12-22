@@ -13,7 +13,7 @@ var OfButton = React.createClass({
         style={styles.ofButton}
         activeOpacity={1}
         animationVelocity={0}
-        underlayColor="#ccc"
+        underlayColor="orange"
         >
         <Text style={styles.btnName}>
           的
@@ -29,9 +29,9 @@ var styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'flex-end',
     alignItems: 'flex-end',
-    borderBottomWidth: 1,
-    borderBottomColor: '#e6e6e6',
-    backgroundColor: 'orange'
+    backgroundColor: 'rgb(253, 188, 64)',
+    borderLeftColor: 'rgb(253, 188, 64)',
+    borderLeftWidth: 1
   },
   btnName: {
     color: '#fff'

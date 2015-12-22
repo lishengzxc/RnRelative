@@ -3,8 +3,7 @@ var {
   StyleSheet,
   Text,
   View,
-  TouchableHighlight,
-  Alert
+  TouchableHighlight
 } = React;
 
 var NormalButton = React.createClass({
@@ -36,8 +35,8 @@ var styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'flex-end',
     alignItems: 'flex-end',
-    borderBottomWidth: 1,
-    borderBottomColor: '#e6e6e6',
+    borderTopWidth: 1,
+    borderTopColor: '#e6e6e6',
     borderRightWidth: 1,
     borderRightColor: '#e6e6e6'
   }
