@@ -1,4 +1,5 @@
-var React = require('react-native');
+import React, { Component } from 'react-native';
+
 var {
   StyleSheet,
   Text,
@@ -6,20 +7,37 @@ var {
   TouchableHighlight
 } = React;
 
-var NormalButton = React.createClass({
+class NormalButton extends Component {
+  constructor(props) {
+    super();
+    this.state = {
+      value: {
+        '父': '爸爸',
+        '母': '妈妈',
+        '兄': '哥哥',
+        '弟': '弟弟',
+        '姐': '姐姐',
+        '妹': '妹妹',
+        '夫': '丈夫',
+        '妻': '妻子',
+        '儿': '儿子',
+        '女': '女儿'
+      }[props.btnName]
+    };
+  }
 
-  _onPressHandler() {
-    console.log(this.props.btnName);
-  },
+  handlerPress(e) {
+    this.props.onPressHandler(this.state.value);
+  }
 
-  render: function() {
+  render() {
     return (
       <TouchableHighlight
         style={styles.normalButton}
         activeOpacity={1}
         animationVelocity={0}
         underlayColor="#ccc"
-        onPress={this._onPressHandler}
+        onPress={(e) => this.handlerPress(e)}
         >
         <Text>
           {this.props.btnName}
@@ -27,7 +45,7 @@ var NormalButton = React.createClass({
       </TouchableHighlight>
     );
   }
-});
+}
 
 var styles = StyleSheet.create({
   normalButton: {
@@ -42,4 +60,4 @@ var styles = StyleSheet.create({
   }
 });
 
-module.exports = NormalButton;
+export default NormalButton;
