@@ -2,7 +2,7 @@
 import React, { Component } from 'react-native';
 import { connect } from 'react-redux/native';
 // flow
-import { onAddItem } from './actions';
+import { onAddItem, onClear } from './actions';
 // 按钮组件
 import NormalButton from './NormalButton';
 import BackButton from './BackButton';
@@ -25,43 +25,58 @@ class App extends Component {
 
     const { dispatch, items } = this.props;
 
+    var olderYoungerCanPress = false;
+
+    var process = items.relativeCalc.process;
+    var result = items.relativeCalc.result;
+
+    if (typeof result === 'object') {
+      result = `比 ${result.middle} 年长/年轻?`
+    }
+
 
     return (
 
       <View style={styles.container}>
         <View style={styles.displayPanel}>
           <View style={styles.diplayProcess}>
-            <Text>{items.relativeCalc.join(' 的 ')}</Text>
+            <Text>{process.join(' 的 ')}</Text>
           </View>
           <View style={styles.diplayResult}>
-            <Text style={styles.diplayResultText}>爷爷</Text>
+            <Text style={styles.diplayResultText}>{result}</Text>
           </View>
         </View>
         <View style={styles.buttonGroup}>
-          <View style={styles.buttonGroupRow}>
-            <NormalButton btnName="父" onPressHandler={(item) => dispatch(onAddItem(item))}/>
-            <NormalButton btnName="母" onPressHandler={(item) => dispatch(onAddItem(item))}/>
-            <BackButton/>
-            <ClearButton/>
+          <View style={styles.buttonGroupRow1}>
+            <NormalButton btnName="父" canPress={true} onPressHandler={(item) => dispatch(onAddItem(item))}/>
+            <NormalButton btnName="母" canPress={true} onPressHandler={(item) => dispatch(onAddItem(item))}/>
+            <BackButton canPress={true} />
+            <ClearButton canPress={true} onPressHandler={() => dispatch(onClear())}/>
           </View>
-          <View style={styles.buttonGroupRow}>
-            <NormalButton btnName="兄" onPressHandler={(item) => dispatch(onAddItem(item))}/>
-            <NormalButton btnName="弟" onPressHandler={(item) => dispatch(onAddItem(item))}/>
-            <NormalButton btnName="姐" onPressHandler={(item) => dispatch(onAddItem(item))}/>
-            <LastNormalButton btnName="妹" onPressHandler={(item) => dispatch(onAddItem(item))}/>
+          <View style={styles.buttonGroupRow1}>
+            <NormalButton btnName="兄" canPress={true} onPressHandler={(item) => dispatch(onAddItem(item))}/>
+            <NormalButton btnName="弟" canPress={true} onPressHandler={(item) => dispatch(onAddItem(item))}/>
+            <NormalButton btnName="姐" canPress={true} onPressHandler={(item) => dispatch(onAddItem(item))}/>
+            <NormalButton btnName="妹" canPress={true} onPressHandler={(item) => dispatch(onAddItem(item))}/>
           </View>
-          <View style={styles.buttonGroupRow}>
-            <NormalButton btnName="夫" onPressHandler={(item) => dispatch(onAddItem(item))}/>
-            <NormalButton btnName="妻" onPressHandler={(item) => dispatch(onAddItem(item))}/>
-            <OlderButton/>
-            <OfButton/>
+          <View style={styles.buttonGroupRow2}>
+            <View style={styles.buttonGroupRow2innerLeft}>
+              <View style={styles.buttonGroupRow1}>
+                <NormalButton btnName="夫" canPress={true} onPressHandler={(item) => dispatch(onAddItem(item))}/>
+                <NormalButton btnName="妻" canPress={true} onPressHandler={(item) => dispatch(onAddItem(item))}/>
+                <OlderButton canPress={true}/>
+              </View>
+              <View style={styles.buttonGroupRow1}>
+                <NormalButton btnName="儿" canPress={true} onPressHandler={(item) => dispatch(onAddItem(item))}/>
+                <NormalButton btnName="女" canPress={true} onPressHandler={(item) => dispatch(onAddItem(item))}/>
+                <YoungerButton canPress={false} />
+              </View>
+            </View>
+            <View style={styles.buttonGroupRow2innerRight}>
+              <EqualButton canPress={true}/>
+            </View>
           </View>
-          <View style={styles.buttonGroupRow}>
-            <NormalButton btnName="儿" onPressHandler={(item) => dispatch(onAddItem(item))}/>
-            <NormalButton btnName="女" onPressHandler={(item) => dispatch(onAddItem(item))}/>
-            <YoungerButton/>
-            <EqualButton/>
-          </View>
+
         </View>
       </View>
     );
@@ -85,9 +100,19 @@ var styles = StyleSheet.create({
   buttonGroup: {
     flex: 2
   },
-  buttonGroupRow: {
+  buttonGroupRow1: {
     flex: 1,
     flexDirection: 'row'
+  },
+  buttonGroupRow2: {
+    flex: 2,
+    flexDirection: 'row'
+  },
+  buttonGroupRow2innerLeft: {
+    flex: 3
+  },
+  buttonGroupRow2innerRight: {
+    flex: 1
   },
   diplayProcess: {
     flex: 2,

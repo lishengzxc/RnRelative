@@ -7,22 +7,39 @@ var {
   TouchableHighlight
 } = React;
 
+const valueHash = {
+  '父': '爸爸',
+  '母': '妈妈',
+  '兄': '哥哥',
+  '弟': '弟弟',
+  '姐': '姐姐',
+  '妹': '妹妹',
+  '夫': '丈夫',
+  '妻': '妻子',
+  '儿': '儿子',
+  '女': '女儿'
+};
+
+const keyHash = {
+  '父': 'baba',
+  '母': 'mama',
+  '兄': 'gege',
+  '弟': 'didi',
+  '姐': 'jiejie',
+  '妹': 'meimei',
+  '夫': 'zhangfu',
+  '妻': 'qizi',
+  '儿': 'erzi',
+  '女': 'nver'
+};
+
+
 class LastNormalButton extends Component {
   constructor(props) {
     super();
     this.state = {
-      value: {
-        '父': '爸爸',
-        '母': '妈妈',
-        '兄': '哥哥',
-        '弟': '弟弟',
-        '姐': '姐姐',
-        '妹': '妹妹',
-        '夫': '丈夫',
-        '妻': '妻子',
-        '儿': '儿子',
-        '女': '女儿'
-      }[props.btnName]
+      key: keyHash[props.btnName],
+      value: valueHash[props.btnName]
     };
   }
 
@@ -39,7 +56,7 @@ class LastNormalButton extends Component {
         underlayColor="#ccc"
         onPress={(e) => this.handlerPress(e)}
         >
-        <Text>
+        <Text stlye={styles.text}>
           {this.props.btnName}
         </Text>
       </TouchableHighlight>
@@ -52,9 +69,10 @@ var styles = StyleSheet.create({
     padding: 30,
     flex: 1,
     justifyContent: 'flex-end',
-    alignItems: 'flex-end',
-    borderTopWidth: 1,
-    borderTopColor: '#e6e6e6'
+    alignItems: 'flex-end'
+  },
+  text: {
+    color: '#666'
   }
 });
 

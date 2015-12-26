@@ -1,4 +1,5 @@
-var React = require('react-native');
+import React, { Component } from 'react-native';
+
 var {
   StyleSheet,
   Text,
@@ -6,8 +7,8 @@ var {
   TouchableHighlight
 } = React;
 
-var YoungerButton = React.createClass({
-  render: function() {
+class YoungerButton extends Component {
+  render() {
     return (
       <TouchableHighlight
         style={styles.youngerButton}
@@ -21,7 +22,7 @@ var YoungerButton = React.createClass({
       </TouchableHighlight>
     );
   }
-});
+}
 
 var styles = StyleSheet.create({
   youngerButton: {
@@ -29,15 +30,13 @@ var styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'flex-end',
     alignItems: 'flex-end',
-    borderTopWidth: 1,
-    borderTopColor: '#e6e6e6',
     backgroundColor: '#f6f6f6',
-    borderRightWidth: 1,
-    borderRightColor: '#e6e6e6'
+    borderWidth: .5,
+    borderColor: '#e6e6e6'
   },
   btnName: {
     color: '#ccc'
   }
 });
 
-module.exports = YoungerButton;
+export default YoungerButton;

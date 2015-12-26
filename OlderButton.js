@@ -1,4 +1,5 @@
-var React = require('react-native');
+import React, { Component } from 'react-native';
+
 var {
   StyleSheet,
   Text,
@@ -6,38 +7,53 @@ var {
   TouchableHighlight
 } = React;
 
-var OlderButton = React.createClass({
-  render: function() {
+class OlderButton extends Component {
+
+  render() {
+    console.log(this.props);
+
+
     return (
       <TouchableHighlight
-        style={styles.olderButton}
+        style={styles.olderButtonCannotPress}
         activeOpacity={1}
         animationVelocity={0}
         underlayColor="#ccc"
         >
-        <Text style={styles.btnName}>
+        <Text style={styles.btnNameCannotPress}>
           长
         </Text>
       </TouchableHighlight>
+
     );
   }
-});
+}
 
 var styles = StyleSheet.create({
-  olderButton: {
+  olderButtonCannotPress: {
     padding: 30,
     flex: 1,
     justifyContent: 'flex-end',
     alignItems: 'flex-end',
-    borderTopWidth: 1,
-    borderTopColor: '#e6e6e6',
     backgroundColor: '#f6f6f6',
-    borderRightWidth: 1,
-    borderRightColor: '#e6e6e6'
+    borderWidth: .5,
+    borderColor: '#e6e6e6'
   },
-  btnName: {
+  olderButtonCanPress: {
+    padding: 30,
+    flex: 1,
+    justifyContent: 'flex-end',
+    alignItems: 'flex-end',
+    backgroundColor: '#35A084',
+    borderWidth: .5,
+    borderColor: '#35A084'
+  },
+  btnNameCannotPress: {
     color: '#ccc'
+  },
+  btnNameCanPress: {
+    color: '#fff'
   }
 });
 
-module.exports = OlderButton;
+export default OlderButton;

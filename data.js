@@ -29,22 +29,23 @@ export default {
       'older': '姐姐',
       'middle': '我',
       'younger': '妹妹'
-    },
-    '爷爷': {
-      'baba': '太公',
-      'mama': '太婆',
-      'gege': '伯公',
-      'didi': '叔伯',
-      'jiejie': '姑奶奶',
-      'meimei': '姑奶奶',
-      'zhangfu': '未知',
-      'qizi': '奶奶',
-      'erzi': {
-        'older': '伯父',
-        'middle': '爸爸',
-        'younger': '叔叔'
-      },
-      'nver': '姑妈'
     }
+  },
+  '爷爷': {
+    'baba': '太公',
+    'mama': '太婆',
+    'gege': '伯公',
+    'didi': '叔伯',
+    'jiejie': '姑奶奶',
+    'meimei': '姑奶奶',
+    'zhangfu': '未知',
+    'qizi': '奶奶',
+    'erzi': {
+      'older': '伯父',
+      'middle': '爸爸',
+      'younger': '叔叔'
+    },
+    'nver': '姑妈'
   }
+
 };

@@ -1,4 +1,5 @@
-var React = require('react-native');
+import React, { Component } from 'react-native';
+
 var {
   StyleSheet,
   Text,
@@ -6,14 +7,21 @@ var {
   TouchableHighlight
 } = React;
 
-var ClearButton = React.createClass({
-  render: function() {
+
+class ClearButton extends Component {
+
+  handlerPress(e) {
+    this.props.onPressHandler();
+  }
+
+  render() {
     return (
       <TouchableHighlight
         style={styles.clearButton}
         activeOpacity={1}
         animationVelocity={0}
         underlayColor="#ccc"
+        onPress={(e) => this.handlerPress(e)}
         >
         <Text style={styles.btnName}>
           C
@@ -21,7 +29,7 @@ var ClearButton = React.createClass({
       </TouchableHighlight>
     );
   }
-});
+}
 
 var styles = StyleSheet.create({
   clearButton: {
@@ -30,12 +38,12 @@ var styles = StyleSheet.create({
     justifyContent: 'flex-end',
     alignItems: 'flex-end',
     backgroundColor: '#f6f6f6',
-    borderTopWidth: 1,
-    borderTopColor: '#e6e6e6'
+    borderWidth: .5,
+    borderColor: '#e6e6e6'
   },
   btnName: {
     color: 'red'
   }
 });
 
-module.exports = ClearButton;
+export default ClearButton;

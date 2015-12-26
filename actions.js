@@ -2,6 +2,9 @@
 export const ADD_ITEM = 'ADD_ITEM';
 export const OF = 'OF';
 export const EQUAL = 'EQUAL';
+export const CLEAR = 'CLEAR';
+export const OLDER = 'OLDER';
+export const YOUNGER = 'YOUNGER';
 
 // actions createors
 export function onAddItem(item) {
@@ -10,6 +13,24 @@ export function onAddItem(item) {
     item: item
   };
 };
+
+export function onClear() {
+  return {
+    type: CLEAR
+  };
+};
+
+export function onOlder() {
+  return {
+    type: OLDER
+  };
+}
+
+export function onYounger() {
+  return {
+    type: YOUNGER
+  };
+}
 
 export function onOf() {
   return {
