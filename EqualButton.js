@@ -1,4 +1,5 @@
-var React = require('react-native');
+import React, { Component } from 'react-native';
+
 var {
   StyleSheet,
   Text,
@@ -6,22 +7,28 @@ var {
   TouchableHighlight
 } = React;
 
-var EqualButton = React.createClass({
-  render: function() {
+class EqualButton extends Component {
+
+  handlerPress(e) {
+    this.props.onPressHandler();
+  }
+
+  render() {
     return (
       <TouchableHighlight
         style={styles.equalButton}
         activeOpacity={1}
         animationVelocity={0}
         underlayColor="orange"
+        onPress={(e) => this.handlerPress(e)}
         >
         <Text style={styles.btnName}>
-          ＝
+          的
         </Text>
       </TouchableHighlight>
     );
   }
-});
+}
 
 var styles = StyleSheet.create({
   equalButton: {
@@ -38,4 +45,4 @@ var styles = StyleSheet.create({
   }
 });
 
-module.exports = EqualButton;
+export default EqualButton;

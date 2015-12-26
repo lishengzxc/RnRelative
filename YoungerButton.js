@@ -8,6 +8,11 @@ var {
 } = React;
 
 class YoungerButton extends Component {
+
+  handlerPress(e) {
+    this.props.onPressHandler();
+  }
+
   render() {
     return (
       <TouchableHighlight
@@ -15,6 +20,7 @@ class YoungerButton extends Component {
         activeOpacity={1}
         animationVelocity={0}
         underlayColor="#ccc"
+        onPress={(e) => this.handlerPress(e)}
         >
         <Text style={styles.btnName}>
           轻

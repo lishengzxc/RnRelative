@@ -9,16 +9,18 @@ var {
 
 class OlderButton extends Component {
 
+  handlerPress(e) {
+    this.props.onPressHandler();
+  }
+
   render() {
-    console.log(this.props);
-
-
     return (
       <TouchableHighlight
         style={styles.olderButtonCannotPress}
         activeOpacity={1}
         animationVelocity={0}
         underlayColor="#ccc"
+        onPress={(e) => this.handlerPress(e)}
         >
         <Text style={styles.btnNameCannotPress}>
           长

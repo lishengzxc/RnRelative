@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import { ADD_ITEM, OF, EQUAL, CLEAR } from './actions';
+import { ADD_ITEM, OF, EQUAL, CLEAR, OLDER, YOUNGER } from './actions';
 
 import data from './data';
 
@@ -13,17 +13,19 @@ function relativeCalc (state = { process: ['我'], result: '我' }, action) {
     case CLEAR:
       return { process: ['我'], result: '我' };
 
-    // case OF:
-    //   return [
-    //     ...state,
-    //     item
-    //   ]
-    //
-    // case EQUAL:
-    //   return [
-    //     ...state,
-    //     item
-    //   ]
+    case OLDER:
+      var newReuslt = state.result.older;
+      state.process.push(newReuslt);
+      return { process: state.process, result: newReuslt };
+
+
+    case YOUNGER:
+      var newReuslt = state.result.younger;
+      state.process.push(newReuslt);
+      return { process: state.process, result: newReuslt };
+
+    case EQUAL:
+      return state;
 
     default:
       return state;

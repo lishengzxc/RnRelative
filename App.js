@@ -2,7 +2,7 @@
 import React, { Component } from 'react-native';
 import { connect } from 'react-redux/native';
 // flow
-import { onAddItem, onClear } from './actions';
+import { onAddItem, onClear, onOlder, onYounger, onEqual } from './actions';
 // 按钮组件
 import NormalButton from './NormalButton';
 import BackButton from './BackButton';
@@ -64,16 +64,16 @@ class App extends Component {
               <View style={styles.buttonGroupRow1}>
                 <NormalButton btnName="夫" canPress={true} onPressHandler={(item) => dispatch(onAddItem(item))}/>
                 <NormalButton btnName="妻" canPress={true} onPressHandler={(item) => dispatch(onAddItem(item))}/>
-                <OlderButton canPress={true}/>
+                <OlderButton canPress={true} onPressHandler={() => dispatch(onOlder())}/>
               </View>
               <View style={styles.buttonGroupRow1}>
                 <NormalButton btnName="儿" canPress={true} onPressHandler={(item) => dispatch(onAddItem(item))}/>
                 <NormalButton btnName="女" canPress={true} onPressHandler={(item) => dispatch(onAddItem(item))}/>
-                <YoungerButton canPress={false} />
+                <YoungerButton canPress={false} onPressHandler={() => dispatch(onYounger())}/>
               </View>
             </View>
             <View style={styles.buttonGroupRow2innerRight}>
-              <EqualButton canPress={true}/>
+              <EqualButton canPress={true} onPressHandler={() => dispatch(onEqual())}/>
             </View>
           </View>
 
