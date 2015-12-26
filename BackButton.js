@@ -1,4 +1,5 @@
-var React = require('react-native');
+import React, { Component } from 'react-native';
+
 var {
   StyleSheet,
   Text,
@@ -6,8 +7,8 @@ var {
   TouchableHighlight
 } = React;
 
-var BackButton = React.createClass({
-  render: function() {
+class BackButton extends Component {
+  render() {
     return (
       <TouchableHighlight
         style={styles.backButton}
@@ -21,7 +22,7 @@ var BackButton = React.createClass({
       </TouchableHighlight>
     );
   }
-});
+}
 
 var styles = StyleSheet.create({
   backButton: {
@@ -38,4 +39,4 @@ var styles = StyleSheet.create({
   }
 });
 
-module.exports = BackButton;
+export default BackButton;
