@@ -23,7 +23,7 @@ class EqualButton extends Component {
         onPress={(e) => this.handlerPress(e)}
         >
         <Text style={styles.btnName}>
-          的
+          ＝
         </Text>
       </TouchableHighlight>
     );

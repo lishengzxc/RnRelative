@@ -7,7 +7,6 @@ import { onAddItem, onClear, onOlder, onYounger, onEqual } from './actions';
 import NormalButton from './NormalButton';
 import BackButton from './BackButton';
 import ClearButton from './ClearButton';
-import LastNormalButton from './LastNormalButton';
 import OlderButton from './OlderButton';
 import OfButton from './OfButton';
 import YoungerButton from './YoungerButton';
@@ -31,6 +30,7 @@ class App extends Component {
     var result = items.relativeCalc.result;
 
     if (typeof result === 'object') {
+      olderYoungerCanPress = true;
       result = `比 ${result.middle} 年长/年轻?`
     }
 
@@ -48,32 +48,32 @@ class App extends Component {
         </View>
         <View style={styles.buttonGroup}>
           <View style={styles.buttonGroupRow1}>
-            <NormalButton btnName="父" canPress={true} onPressHandler={(item) => dispatch(onAddItem(item))}/>
-            <NormalButton btnName="母" canPress={true} onPressHandler={(item) => dispatch(onAddItem(item))}/>
-            <BackButton canPress={true} />
-            <ClearButton canPress={true} onPressHandler={() => dispatch(onClear())}/>
+            <NormalButton btnName="父" canPress={!olderYoungerCanPress} onPressHandler={(item) => dispatch(onAddItem(item))}/>
+            <NormalButton btnName="母" canPress={!olderYoungerCanPress} onPressHandler={(item) => dispatch(onAddItem(item))}/>
+            <BackButton />
+            <ClearButton onPressHandler={() => dispatch(onClear())}/>
           </View>
           <View style={styles.buttonGroupRow1}>
-            <NormalButton btnName="兄" canPress={true} onPressHandler={(item) => dispatch(onAddItem(item))}/>
-            <NormalButton btnName="弟" canPress={true} onPressHandler={(item) => dispatch(onAddItem(item))}/>
-            <NormalButton btnName="姐" canPress={true} onPressHandler={(item) => dispatch(onAddItem(item))}/>
-            <NormalButton btnName="妹" canPress={true} onPressHandler={(item) => dispatch(onAddItem(item))}/>
+            <NormalButton btnName="兄" canPress={!olderYoungerCanPress} onPressHandler={(item) => dispatch(onAddItem(item))}/>
+            <NormalButton btnName="弟" canPress={!olderYoungerCanPress} onPressHandler={(item) => dispatch(onAddItem(item))}/>
+            <NormalButton btnName="姐" canPress={!olderYoungerCanPress} onPressHandler={(item) => dispatch(onAddItem(item))}/>
+            <NormalButton btnName="妹" canPress={!olderYoungerCanPress} onPressHandler={(item) => dispatch(onAddItem(item))}/>
           </View>
           <View style={styles.buttonGroupRow2}>
             <View style={styles.buttonGroupRow2innerLeft}>
               <View style={styles.buttonGroupRow1}>
-                <NormalButton btnName="夫" canPress={true} onPressHandler={(item) => dispatch(onAddItem(item))}/>
-                <NormalButton btnName="妻" canPress={true} onPressHandler={(item) => dispatch(onAddItem(item))}/>
-                <OlderButton canPress={true} onPressHandler={() => dispatch(onOlder())}/>
+                <NormalButton btnName="夫" canPress={!olderYoungerCanPress} onPressHandler={(item) => dispatch(onAddItem(item))}/>
+                <NormalButton btnName="妻" canPress={!olderYoungerCanPress} onPressHandler={(item) => dispatch(onAddItem(item))}/>
+                <OlderButton canPress={olderYoungerCanPress} onPressHandler={() => dispatch(onOlder())}/>
               </View>
               <View style={styles.buttonGroupRow1}>
-                <NormalButton btnName="儿" canPress={true} onPressHandler={(item) => dispatch(onAddItem(item))}/>
-                <NormalButton btnName="女" canPress={true} onPressHandler={(item) => dispatch(onAddItem(item))}/>
-                <YoungerButton canPress={false} onPressHandler={() => dispatch(onYounger())}/>
+                <NormalButton btnName="儿" canPress={!olderYoungerCanPress} onPressHandler={(item) => dispatch(onAddItem(item))}/>
+                <NormalButton btnName="女" canPress={!olderYoungerCanPress} onPressHandler={(item) => dispatch(onAddItem(item))}/>
+                <YoungerButton canPress={olderYoungerCanPress} onPressHandler={() => dispatch(onYounger())}/>
               </View>
             </View>
             <View style={styles.buttonGroupRow2innerRight}>
-              <EqualButton canPress={true} onPressHandler={() => dispatch(onEqual())}/>
+              <EqualButton canPress={!olderYoungerCanPress} onPressHandler={() => dispatch(onEqual())}/>
             </View>
           </View>
 

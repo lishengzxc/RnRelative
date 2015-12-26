@@ -10,19 +10,24 @@ var {
 class YoungerButton extends Component {
 
   handlerPress(e) {
+    if (!this.props.canPress) return;
     this.props.onPressHandler();
   }
 
   render() {
+    var underlayColor = this.props.canPress ? '#32B353' : '#f6f6f6';
+    var btnStyles = this.props.canPress ? styles.youngerButtonCanPress : styles.youngerButtonCannotPress;
+    var btnTextStyles = this.props.canPress ? styles.btnNameCanPress : styles.btnNameCannotPress;
+
     return (
       <TouchableHighlight
-        style={styles.youngerButton}
+        style={btnStyles}
         activeOpacity={1}
         animationVelocity={0}
-        underlayColor="#ccc"
+        underlayColor={underlayColor}
         onPress={(e) => this.handlerPress(e)}
         >
-        <Text style={styles.btnName}>
+        <Text style={btnTextStyles}>
           轻
         </Text>
       </TouchableHighlight>
@@ -31,7 +36,7 @@ class YoungerButton extends Component {
 }
 
 var styles = StyleSheet.create({
-  youngerButton: {
+  youngerButtonCannotPress: {
     padding: 30,
     flex: 1,
     justifyContent: 'flex-end',
@@ -40,8 +45,20 @@ var styles = StyleSheet.create({
     borderWidth: .5,
     borderColor: '#e6e6e6'
   },
-  btnName: {
+  youngerButtonCanPress: {
+    padding: 30,
+    flex: 1,
+    justifyContent: 'flex-end',
+    alignItems: 'flex-end',
+    backgroundColor: '#4BCC6B',
+    borderWidth: .5,
+    borderColor: '#4BCC6B'
+  },
+  btnNameCannotPress: {
     color: '#ccc'
+  },
+  btnNameCanPress: {
+    color: '#fff'
   }
 });
 
