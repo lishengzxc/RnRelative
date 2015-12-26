@@ -43,6 +43,7 @@ class NormalButton extends Component {
   }
 
   handlerPress(e) {
+    if (!this.props.canPress) return;
     this.props.onPressHandler({
       key: this.state.key,
       value: this.state.value
@@ -50,15 +51,19 @@ class NormalButton extends Component {
   }
 
   render() {
+    var underlayColor = this.props.canPress ? '#ccc' : '#f6f6f6';
+    var btnStyles = this.props.canPress ? styles.normalButtonCanPress : styles.normalButtonCannotPress;
+    var btnTextStyles = this.props.canPress ? styles.textCanPress : styles.textCannotPress;
+
     return (
       <TouchableHighlight
-        style={[styles.normalButton]}
+        style={btnStyles}
         activeOpacity={1}
         animationVelocity={0}
-        underlayColor="#ccc"
+        underlayColor={underlayColor}
         onPress={(e) => this.handlerPress(e)}
         >
-        <Text style={styles.text}>
+        <Text style={btnTextStyles}>
           {this.props.btnName}
         </Text>
       </TouchableHighlight>
@@ -67,7 +72,7 @@ class NormalButton extends Component {
 }
 
 var styles = StyleSheet.create({
-  normalButton: {
+  normalButtonCanPress: {
     padding: 30,
     flex: 1,
     justifyContent: 'flex-end',
@@ -75,8 +80,20 @@ var styles = StyleSheet.create({
     borderWidth: .5,
     borderColor: '#e6e6e6'
   },
-  text: {
+  normalButtonCannotPress: {
+    padding: 30,
+    flex: 1,
+    justifyContent: 'flex-end',
+    alignItems: 'flex-end',
+    backgroundColor: '#f6f6f6',
+    borderWidth: .5,
+    borderColor: '#e6e6e6'
+  },
+  textCanPress: {
     color: '#666'
+  },
+  textCannotPress: {
+    color: '#ccc'
   }
 });
 
