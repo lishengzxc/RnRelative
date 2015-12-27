@@ -8,6 +8,11 @@ var {
 } = React;
 
 class BackButton extends Component {
+
+  handlerPress(e) {
+    this.props.onPressHandler();
+  }
+
   render() {
     return (
       <TouchableHighlight
@@ -15,9 +20,10 @@ class BackButton extends Component {
         activeOpacity={1}
         animationVelocity={0}
         underlayColor="#ccc"
+        onPress={(e) => this.handlerPress(e)}
         >
         <Text style={styles.btnName}>
-          B
+          ←
         </Text>
       </TouchableHighlight>
     );
@@ -35,7 +41,8 @@ var styles = StyleSheet.create({
     borderColor: '#e6e6e6'
   },
   btnName: {
-    color: 'black'
+    color: 'black',
+    fontWeight: 'bold'
   }
 });
 
