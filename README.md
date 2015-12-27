@@ -13,6 +13,9 @@ This is a repo for starting a react-native app using Redux.
 ### Preview
 <img src="https://raw.githubusercontent.com/lishengzxc/RnRelative/869c4cd27b92a08ea1d3d37e628354f6a7300932/pic.png" />
 
+### [Download](http://lishengzxc.github.io/RnRelative/app-release.apk)  
+<img src="https://raw.githubusercontent.com/lishengzxc/RnRelative/0d5b9e59b01996881fae947f7c9748d0cc581f12/qrcode.png" />
+
 ### License
 The MIT License (MIT)
 
