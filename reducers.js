@@ -1,31 +1,41 @@
 import { combineReducers } from 'redux';
-import { ADD_ITEM, OF, EQUAL, CLEAR, OLDER, YOUNGER } from './actions';
+import { ADD_ITEM, OF, EQUAL, CLEAR, OLDER, YOUNGER, BACK } from './actions';
 
 import data from './data';
 
-function relativeCalc (state = { process: ['我'], result: '我' }, action) {
+function relativeCalc (state = { process: ['我'], result: ['我'] }, action) {
   switch (action.type) {
     case ADD_ITEM:
       state.process.push(action.item.value);
-      var newReuslt = data[state.result][action.item.key];
-      return { process: state.process, result: newReuslt };
+      state.result.push(data[state.result[state.result.length - 1]][action.item.value]);
+      return { process: state.process, result: state.result };
 
     case CLEAR:
-      return { process: ['我'], result: '我' };
+      return { process: ['我'], result: ['我'] };
 
     case OLDER:
-      var newReuslt = state.result.older;
+      var newReuslt = state.result[state.result.length - 1]['older'];
       state.process.push(newReuslt);
-      return { process: state.process, result: newReuslt };
+      state.result.push(newReuslt);
+      return { process: state.process, result: state.result };
 
 
     case YOUNGER:
-      var newReuslt = state.result.younger;
+      var newReuslt = state.result[state.result.length - 1]['older'];
       state.process.push(newReuslt);
-      return { process: state.process, result: newReuslt };
+      state.result.push(newReuslt);
+      return { process: state.process, result: state.result };
 
     case EQUAL:
       return state;
+
+    case BACK:
+      if (state.process.length === 1) {
+        return { process: ['我'], result: ['我'] };
+      }
+      state.process.pop();
+      state.result.pop();
+      return { process: state.process, result: state.result };
 
     default:
       return state;

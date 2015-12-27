@@ -6,6 +6,10 @@ This is a repo for starting a react-native app using Redux.
 
 > Until React Native works on top of React instead of shipping a fork of React, you’ll need to keep using React Redux 3.x branch and documentation.
 
+### Todo
+- [x] BackButton
+- [ ] EqualButton
+
 ### Preview
 <img src="https://raw.githubusercontent.com/lishengzxc/RnRelative/869c4cd27b92a08ea1d3d37e628354f6a7300932/pic.png" />
 

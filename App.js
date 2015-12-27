@@ -2,7 +2,7 @@
 import React, { Component } from 'react-native';
 import { connect } from 'react-redux/native';
 // flow
-import { onAddItem, onClear, onOlder, onYounger, onEqual } from './actions';
+import { onAddItem, onClear, onOlder, onYounger, onEqual, onBack } from './actions';
 // 按钮组件
 import NormalButton from './NormalButton';
 import BackButton from './BackButton';
@@ -29,9 +29,13 @@ class App extends Component {
     var process = items.relativeCalc.process;
     var result = items.relativeCalc.result;
 
-    if (typeof result === 'object') {
+    var showResult;
+
+    if (typeof result[result.length - 1] === 'object') {
       olderYoungerCanPress = true;
-      result = `比 ${result.middle} 年长/年轻?`
+      showResult = `比 ${result[result.length - 1].middle} 年长/年轻?`;
+    } else {
+      showResult = result[result.length - 1];
     }
 
 
@@ -43,14 +47,14 @@ class App extends Component {
             <Text>{process.join(' 的 ')}</Text>
           </View>
           <View style={styles.diplayResult}>
-            <Text style={styles.diplayResultText}>{result}</Text>
+            <Text style={styles.diplayResultText}>{showResult}</Text>
           </View>
         </View>
         <View style={styles.buttonGroup}>
           <View style={styles.buttonGroupRow1}>
             <NormalButton btnName="父" canPress={!olderYoungerCanPress} onPressHandler={(item) => dispatch(onAddItem(item))}/>
             <NormalButton btnName="母" canPress={!olderYoungerCanPress} onPressHandler={(item) => dispatch(onAddItem(item))}/>
-            <BackButton />
+            <BackButton onPressHandler={() => dispatch(onBack())}/>
             <ClearButton onPressHandler={() => dispatch(onClear())}/>
           </View>
           <View style={styles.buttonGroupRow1}>
@@ -98,7 +102,7 @@ var styles = StyleSheet.create({
     backgroundColor: '#e6e6e6'
   },
   buttonGroup: {
-    flex: 2
+    flex: 2.5
   },
   buttonGroupRow1: {
     flex: 1,

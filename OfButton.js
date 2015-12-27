@@ -1,4 +1,5 @@
-var React = require('react-native');
+import React, { Component } from 'react-native';
+
 var {
   StyleSheet,
   Text,
@@ -6,8 +7,8 @@ var {
   TouchableHighlight
 } = React;
 
-var OfButton = React.createClass({
-  render: function() {
+class OfButton extends Component {
+  render() {
     return (
       <TouchableHighlight
         style={styles.ofButton}
@@ -21,7 +22,7 @@ var OfButton = React.createClass({
       </TouchableHighlight>
     );
   }
-});
+}
 
 var styles = StyleSheet.create({
   ofButton: {
@@ -36,4 +37,4 @@ var styles = StyleSheet.create({
   }
 });
 
-module.exports = OfButton;
+export default OfButton;

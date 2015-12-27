@@ -1,4 +1,5 @@
-var React = require('react-native');
+import React, { Component } from 'react-native';
+
 var {
   StyleSheet,
   Text,
@@ -6,22 +7,28 @@ var {
   TouchableHighlight
 } = React;
 
-var BackButton = React.createClass({
-  render: function() {
+class BackButton extends Component {
+
+  handlerPress(e) {
+    this.props.onPressHandler();
+  }
+
+  render() {
     return (
       <TouchableHighlight
         style={styles.backButton}
         activeOpacity={1}
         animationVelocity={0}
         underlayColor="#ccc"
+        onPress={(e) => this.handlerPress(e)}
         >
         <Text style={styles.btnName}>
-          B
+          ←
         </Text>
       </TouchableHighlight>
     );
   }
-});
+}
 
 var styles = StyleSheet.create({
   backButton: {
@@ -34,8 +41,9 @@ var styles = StyleSheet.create({
     borderColor: '#e6e6e6'
   },
   btnName: {
-    color: 'black'
+    color: 'black',
+    fontWeight: 'bold'
   }
 });
 
-module.exports = BackButton;
+export default BackButton;

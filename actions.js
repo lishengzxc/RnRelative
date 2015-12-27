@@ -5,6 +5,7 @@ export const EQUAL = 'EQUAL';
 export const CLEAR = 'CLEAR';
 export const OLDER = 'OLDER';
 export const YOUNGER = 'YOUNGER';
+export const BACK = 'BACK';
 
 // actions createors
 export function onAddItem(item) {
@@ -43,3 +44,9 @@ export function onEqual() {
     type: EQUAL
   };
 };
+
+export function onBack() {
+  return {
+    type: BACK
+  };
+}
